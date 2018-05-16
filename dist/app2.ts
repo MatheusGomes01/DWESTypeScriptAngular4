@@ -1,30 +1,34 @@
-class Carro {
-    private modelo: string
-    private numeroDePortas:number
-    private velocidade:number = 0
 
-    constructor(modelo: string, numeroDePortas: number){
-        this.modelo = modelo
-        this.numeroDePortas = numeroDePortas
+import Carro from './carro'
+import Pessoa from './pessoa'
+import Concessionaria from './concessionaria'
+/* --- criar carros --- */
+
+let carroA = new Carro('Dodger Journey', 4)
+let carroB = new Carro('Lamborguini', 4)
+let carroC = new Carro('Mustang', 4)
+
+
+/* --- montar lista de carros da concessionaria ---*/
+
+let ListaDeCarros: Carro[] = [carroA, carroB, carroC]
+
+let concessionaria = new Concessionaria('Av Laranja da China', ListaDeCarros)
+
+/*--- exibir lista de carro --- */
+
+//console.log(concessionaria.mostrarListaDeCarros())
+
+/*-- comprar o carro */
+
+let cliente = new Pessoa('Matheus', 'Lamborguini')
+
+concessionaria.mostrarListaDeCarros().map((carro: Carro) => {
+    if(carro['modelo'] == cliente.dizerCarroPreferido()) {
+
+        //comprar
+        cliente.comprarCarro(carro)
     }
+})
 
-    public acelerar(): void{
-        this.velocidade = this.velocidade + 10
-    }
-
-    public parar(): void{
-        this.velocidade = 0
-    }
-
-    public velocidadeAtual(): number{
-        return this.velocidade
-
-    }
-}
-
-let carroA = new Carro('Veloster', 3)
-console.log(carroA)
-carroA.acelerar()
-carroA.acelerar()
-carroA.acelerar()
-console.log(carroA)
+console.log(cliente.dizerCarroQueTem())
