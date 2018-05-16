@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+var carro_1 = require("./carro");
+var moto_1 = require("./moto");
+var concessionaria_1 = require("./concessionaria");
+var carro = new carro_1["default"]('Lamborguini', 2);
+carro.acelerar();
+carro.acelerar();
+var moto = new moto_1["default"]();
+moto.acelerar();
+moto.acelerar();
+var concessionaria = new concessionaria_1["default"]('', []);
+console.log(moto);
+console.log(carro);
+console.log(concessionaria.fornerHorarioDeFuncionamento());
