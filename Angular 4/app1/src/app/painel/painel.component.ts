@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { frase } from '../shared/frase.model';
 import { FRASES } from './frase-mock';
-import { text } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-painel',
@@ -17,6 +16,8 @@ export class PainelComponent implements OnInit {
 
   public rodada:number = 0
   public rodadaFrase: frase 
+
+  public progress: number = 0
 
 
   constructor() { 
@@ -43,6 +44,11 @@ export class PainelComponent implements OnInit {
 
       //trocar pergunta da rodada
     this.rodada++
+
+    //progresso
+    this.progress = this.progress + (100 / this.frases.length)
+
+    console.log(this.progress)
 
     //atualiza o objeto de frase
     this.rodadaFrase = this.frases[this.rodada]
