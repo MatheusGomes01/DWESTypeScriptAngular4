@@ -12,7 +12,7 @@ export class PainelComponent implements OnInit {
 
   public instrucao: string = 'Traduza a frase:'
   public frases: frase [] = FRASES
-  resposta: string
+  resposta: string = ''
 
   public rodada:number = 0
   public rodadaFrase: frase 
@@ -52,6 +52,9 @@ export class PainelComponent implements OnInit {
 
     //atualiza o objeto de frase
     this.rodadaFrase = this.frases[this.rodada]
+
+    //limpa resposta
+    this.resposta = ''
 
     }else {
       alert('Translate not correct')
