@@ -21,8 +21,7 @@ export class PainelComponent implements OnInit {
 
 
   constructor() { 
-    this.rodadaFrase = this.frases[this.rodada]
-    console.log(this.rodadaFrase)
+    this.AtualizaRodada()
   }
 
   ngOnInit() {
@@ -51,14 +50,21 @@ export class PainelComponent implements OnInit {
     console.log(this.progress)
 
     //atualiza o objeto de frase
-    this.rodadaFrase = this.frases[this.rodada]
-
-    //limpa resposta
-    this.resposta = ''
+    this.AtualizaRodada()
+    
 
     }else {
       alert('Translate not correct')
     }
 
+  }
+
+  public AtualizaRodada(): void{
+
+    //define a frase da rodada com base em alguma logica
+    this.rodadaFrase = this.frases[this.rodada]
+
+    //limpa resposta
+    this.resposta = ''
   }
 }
