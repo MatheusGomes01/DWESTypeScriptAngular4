@@ -1,6 +1,13 @@
 <!-- property binding (faz com que atributos da classe dos componenetes sejam 
     associado a atributos do html-->
 
+<!--<img [src]="coreVazio">
 <img [src]="coreVazio">
 <img [src]="coreVazio">
 <img [src]="coreVazio">
+<img [src]="coreVazio">
+<img [src]="coreVazio">
+-->
+
+
+<img *ngfor="let coracao of coracoes" [src]="coracao.exibeCoracao()"/>
