@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 
 import { frase } from '../shared/frase.model';
 import { FRASES } from './frase-mock';
@@ -8,7 +8,7 @@ import { FRASES } from './frase-mock';
   templateUrl: './painel.component.html',
   styleUrls: ['./painel.component.css']
 })
-export class PainelComponent implements OnInit {
+export class PainelComponent implements OnInit, OnDestroy {
 
   public instrucao: string = 'Traduza a frase:'
   public frases: frase [] = FRASES
@@ -33,6 +33,9 @@ export class PainelComponent implements OnInit {
   //one-way-binding permite um data bite na direção de um component ao HTML
   //two-way-binding ação do HTML que impacta novamente no component (ciclo)
 
+  ngOnDestroy(){
+  }
+
   //se não colocar o visualizador de visibilidade o TS lê como public
   public atualizaResposta(resposta: Event):void {
     this.resposta =  (<HTMLInputElement>resposta.target).value
@@ -49,9 +52,7 @@ export class PainelComponent implements OnInit {
     //progresso
     this.progress = this.progress + (100 / this.frases.length)
 
-    console.log(this.progress)
 
-    //
     if(this.rodada === 4){
       this.encerrarJogo.emit('Vitoria')
     }
@@ -65,7 +66,7 @@ export class PainelComponent implements OnInit {
       //diminuir tentativas
       this.tentativas--
 
-      if(this.tentativas == -1){
+      if(this.tentativas === -1){
         this.encerrarJogo.emit('Perdeu')
       }
     }
