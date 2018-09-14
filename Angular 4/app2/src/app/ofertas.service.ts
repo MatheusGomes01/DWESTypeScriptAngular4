@@ -62,8 +62,23 @@ export class OfertasService{
 
         return new Promise((resolve, reject) => {
             //algum tipo de processsamento que ao finalizar chama a funcao resolve ou reject
-            console.log('teste')
-            resolve( this.ofertas )
+            //console.log('teste')
+            let ok = true
+            
+            if(ok){
+                setTimeout(() => resolve(this.ofertas), 3000)
+            }else {
+                reject({ codigo_erro: 404, mensagem_erro: 'servidor indisponivel xpto'})
+            }
+        })
+
+        .then(( ofertas: Oferta[]) => {
+            //trazer alguma tratativa
+            return ofertas
+        })
+
+        .then(( ofertas: Oferta[]) => {
+            return ofertas
         })
     }
 }
